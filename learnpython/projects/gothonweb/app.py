@@ -1,6 +1,6 @@
 ﻿#coding=utf-8
 import web
-from gothonweb.map import *
+from map import *
 
 urls = (
   '/game', 'GameEngine',

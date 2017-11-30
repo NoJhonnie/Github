@@ -2,21 +2,17 @@
 import web
 from gothonweb import map
 
+web.config.debug = False
+
 urls = (
-  '/game', 'GameEngine',
-  '/', 'Index'
+  '/count', 'count',
+  '/reset', 'reset'
 )
 
-app = web.application(urls, globals())
-
-if web.config.get('_session') is None:
-    store = web.session.DiskStore('Sessions')
-    session = web.session.Session(app, store, initializer={'room': None})
-    web.config._session = session
-else:
-    session = web.config._session
-
-render = web.template.render('templates/', base = "layout")
+app = web.application(urls, locals())
+store = web.session.DiskStore('sessions')
+session = web.session.Session(app, store, initializer={'count':0})
+#render = web.template.render('templates/', base = "layout")
 
 """
 index.html对应的内容
@@ -38,25 +34,15 @@ class Index(object):
         greeting = "%s, %s" %(form.greet, form.name)
         return render.index(greeting = greeting)
 """
-class Index(object):
+class count:
     def GET(self):
-        session.room = map.START
-        web.seeother("/game")
+        session.count += 1
+        return str(session.count)
         
-class GameEngine(object):
+class reset:
     def GET(self):
-        if session.room:
-            return render.show_room(room=session.room)
-        else:
-            return render.you_died()
-            
-    def POST(self):
-        form = web.input(action=None)
-        
-        if session.room and form.action:
-            session.room = session.room.go(form.action)
-            
-        web.seeother("/game")
+        session.kill()
+        return ""
 
 
 if __name__ == "__main__":
