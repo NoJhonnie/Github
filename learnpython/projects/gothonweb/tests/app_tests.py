@@ -4,7 +4,7 @@ from tests.tools import assert_response
 
 def test_index():
     resp = app.request("/")
-    assert_equal(resp, status="404")
+    assert_response(resp, status="404")
     
     #test our first GET request to /hello
     resp = app.request("/hello")
