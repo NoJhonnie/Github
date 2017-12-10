@@ -1,0 +1,163 @@
+body{
+    font-family:'Microsoft Yahei';
+    color:#666;
+    font-size:12px;
+}
+
+.login_header{
+    width:953px;
+    height:133px;
+    margin:0 auto;
+}
+
+.login_header a{
+    display:block;
+    width:193px;
+    height:76px;
+    margin-top:28px;
+}
+
+.login_form_con{
+    border-top:1px solid #79a652;
+    border-botton:1px solid #79a652;
+    height:480px;
+    background-color:#518e17;
+}
+
+.login_form{
+    width:953px;
+    height:482px;
+    margin:0 auto;    
+}
+
+.login_form .login_banner{
+    margin:92px 0 0 15px;
+}
+
+.login_form .slogan{
+    font-size:30px;
+    text-align:center;
+    color:#fff;
+    width:30px;
+    height:300px;
+    line-height:36px;
+    margin:87px 0 0 114px;
+}
+
+.login_form .form_input_con{
+    width:368px;
+    height:378px;
+    background-color:#fff;
+    border:1px solid #c6c6c6;
+    margin-top:50px;
+}
+
+.form_title{
+    width:308px;
+    height:70px;
+    border-bottom:1px solid #e0e0e0;
+    margin:0 auto;
+}
+
+.form_title h1{
+    float:left;
+    height:70px;
+    font:bold 24px/70px 'Microsoft Yahei';
+    color:#a8a8a8;
+    margin-left:44px;
+}
+
+.form_title a{
+    float:left;
+    width:100px;
+    height:16px;
+    font:16px/16px 'Microsoft Yahei';
+    color:#5fb42a;
+    text-indent:25px;
+    background:url(../images/icons.png) -1px -551px no-repeat;
+    margin:33px 0 0 36px;
+}
+
+.form_input_con form{
+    width:308px;
+    height:221px;
+    margin:20px auto 0;
+}
+
+.form_input_con form .form_group{
+    width:308px;
+    height:68px;
+}
+
+.form_group .input_txt,.form_group .input_pwd{
+    width:306px;
+    height:38px;
+    border:1px solid #e0e0e0;
+    outline:none;
+    background:url(../images/icons.png) 275px -592px no-repeat #f8f8f8;
+    text-indent:10px;
+}
+
+.form_group .input_pwd{
+    background-position:275px -642px;
+}
+
+.form_group .error{
+    font:12px/28px 'Microsoft Yahei';
+    color:#ff5400;
+    display:none;
+}
+
+.form_group .input_check{
+    margin:2px 10px 0 0;
+}
+
+.form_group .find_pass{
+    color:#4b4b4b;
+}
+
+.form_group .find_pass:hover{
+    color:#80;
+}
+
+.input_sub{
+    width:308px;
+    height:40px;
+    background-color:#47aa34;
+    border:0px;
+    font:24px/40px 'Microsoft Yahei';
+    color:#fff;
+    cursor:pointer;
+}
+
+
+.login_footer{
+    height:145px;
+    margin-top:0px;
+    border-top:0px;
+}
+.footer .links{
+    text-align:center;
+    margin-top:40px;    
+}
+
+.footer .links a{
+    color:#4e4e4e;
+}
+
+.footer .links a:hover{
+    color:#f80;
+}
+
+.footer .links span{
+    color:#4e4e4e;
+    margin:0 10px;
+}
+
+.footer p{
+    text-align:center;
+    line-height:27px;
+    color:#4e4e4e;
+    margin-top:10px;
+}
+    
