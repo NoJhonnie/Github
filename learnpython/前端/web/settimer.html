@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<script type="text/javascript">
+        window.onload = function(){
+            var oDiv = document.getElementById('div1');
+            
+            var future = new Date(2018,00,01,00,0,0);
+            var now = new Date();
+            
+            var seconds = parseInt((future - now)/1000);
+            var days = parseInt(seconds/60/60/24);
+            var hours = parseInt((seconds%(60*60*24))/3600);
+            var minutes = parseInt(((seconds%(60*60*24))%3600)/60);
+            var secondes = parseInt(seconds%60);
+            alert(secondes);
+            
+            function timego(){              
+                var future = new Date(2018,00,01,00,0,0);
+                var now = new Date();                
+                var seconds = parseInt((future - now)/1000);
+                var days = parseInt(seconds/60/60/24);
+                var hours = parseInt((seconds%(60*60*24))/3600);
+                var minutes = parseInt(((seconds%(60*60*24))%3600)/60);
+                var secondes = parseInt(seconds%60)+1;
+                
+                oDiv.innerHTML = '距离元旦还剩：'+days+'日'+hours+'时'+minutes+'分'+secondes+'秒';
+            }
+            
+            timego();
+            setInterval(timego,1000);
+        }
+        
+        function toweek(num){
+            switch(num){
+                case 0:
+                    return 'sunday';
+                    break;
+                case 1:
+                    return 'Monday';
+                    break;
+                case 2:
+                    return 'Tuesday';
+                    break;
+                case 3:
+                    return 'Wednesday';
+                    break;
+                case 4:
+                    return 'Thursday';
+                    break;
+                case 5:
+                    return 'Friday';
+                    break;
+                case 6:
+                    return 'Saturday';
+                    break;
+            }
+        }
+        
+        function todou(num){
+            if(num<10){
+                return '0'+num;            
+            }
+            else{
+                return num;
+            }
+        }
+	</script>
+
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>
