@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tinymce',
     'fd_user',
     'fd_goods',
+    'fd_cart',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -83,7 +84,7 @@ DATABASES = {
         'NAME': 'freshday',
         'USER':'root',
         'PASSWORD':'root',
-        'HOST':'192.168.1.107',
+        'HOST':'192.168.1.113',
         'PORT':'3306',
     }
 }

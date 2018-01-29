@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import sys
+sys.path.append('C:\\Users\\Gogh\\Documents\\Github\\learnpython\\Envs\\projects\\freshDay')
+from fd_goods import models
 from . import user_decorator
 from models import *
-from fd_goods.models import GoodsInfo
+
 from hashlib import sha1
 from django.shortcuts import render,redirect,HttpResponseRedirect
 
