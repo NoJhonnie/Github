@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^user/',include('fd_user.urls')),
     url(r'^',include('fd_goods.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^',include('fd_cart.urls')),
+    url(r'^cart/',include('fd_cart.urls')),
 ]

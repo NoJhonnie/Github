@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import sys
-sys.path.append('C:\\Users\\Gogh\\Documents\\Github\\learnpython\\Envs\\projects\\freshDay')
-from fd_goods import models
+from fd_goods.models import GoodsInfo
 from . import user_decorator
 from models import *
-
 from hashlib import sha1
 from django.shortcuts import render,redirect,HttpResponseRedirect
 
@@ -85,7 +82,9 @@ def info(request):
     goods_ids1 = goods_ids.split(',')
     goods_list = []
     for goods_id in goods_ids1:
-        goods_list.append(GoodsInfo.objects.get(id=int(goods_id)))
+        if len(goods_id) != 0:
+            goods_list.append(GoodsInfo.objects.get(id=int(goods_id)))
+
 
     context = {'title': '用户中心', 'page_name':1,
                'user_email': user_email,

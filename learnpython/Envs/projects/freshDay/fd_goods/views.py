@@ -24,7 +24,7 @@ def index(request):
                'type2': type2, 'type22': type22,
                'type3': type3, 'type33': type33,
                'type4': type4, 'type44': type44,
-               'type5': type5, 'type55': type55,
+               'type5': type5, 'type55': type55
                }
     return render(request, 'fd_goods/index.html', context)
 

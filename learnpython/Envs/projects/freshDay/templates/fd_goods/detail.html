@@ -10,18 +10,26 @@
     }
     function minus() {
 	    num = parseFloat($('.num_show').val());
-	    $('.num_show').val(num-1);
-	    $('.num_show').blur();
+	    if(num>0) {
+            $('.num_show').val(num - 1);
+            $('.num_show').blur();
+        }
+    }
 
+    function gocart() {
+        count = parseFloat($('.num_show').val());
+        id = parseFloat($('.gid').text());
+        strhref = "/cart/add"+ id +"_"+count;
+        window.location.href = strhref;
     }
 
     $(function () {
         $('.num_show').blur(function () {
 			num = parseFloat($('.num_show').val());
 			price = parseFloat($('#gprice').text());
-			total = num*price;
+			total = num * price;
 			$('#gtotal').text(total.toFixed(2)+'元');
-        });
+            });
 
     });
 </script>
@@ -62,7 +70,8 @@
 	</div>
 
 	<div class="goods_detail_con clearfix">
-		<div class="goods_detail_pic fl"><img src="/static/{{g.gpic}}"></div>
+        <a class="gid" hidden>{{ g.id }}</a>
+		<div class="goods_detail_pic fl"><img src="/static/{{g.gpic}}" width="350px" height="350px"></div>
 
 		<div class="goods_detail_list fr">
 			<h3>{{g.gtitle}}</h3>
@@ -79,9 +88,9 @@
 					<a href="javascript:minus();" class="minus fr">-</a>
 				</div> 
 			</div>
-			<div class="total">总价：<em>{{gtotal}}</em></div>
+			<div class="total">总价：<em id="gtotal">{{g.gprice}}元</em></div>
 			<div class="operate_btn">
-				<a href="javascript:;" class="buy_btn">立即购买</a>
+				<a href="javascript:gocart();" class="buy_btn">立即购买</a>
 				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
 			</div>
 		</div>
@@ -117,4 +126,36 @@
 		</div>
 	</div>
 
+    <div class="add_jump"></div>
+
+    <script type="text/javascript">
+        var $add_x = $('#add_cart').offset().top;
+        var $add_y = $('#add_cart').offset().left;
+
+        var $to_x = $('#show_count').offset().top;
+        var $to_y = $('#show_count').offset().left;
+
+        $(".add_jump").css({'left':$add_y + 80, 'top':$add_x + 10, 'display':'block'})
+        $("#add_cart").click(function () {
+            //判断是否登陆，否则提示先登陆
+            if($('.login_btn').text().indexOf('登陆')>=0){
+                alert('请先登陆后再购买');
+                location.href = '/user/login/';
+                return;
+            }
+            //动画
+            $(".add_jump").stop().animate({
+                'left':$to_y + 7,
+                'top': $to_x + 7,
+                },
+                "fast", function(){
+                    $(".add_jump").fadeOut('fast',function () {});
+
+            //异步
+            num = parseInt($('.num_show').val());
+            $.get('/cart/add{{ g.id }}_'+num+'/', function (data) {
+               $('#show_count').text(data.count);
+            });
+        });
+    </script>
 {% endblock content %}
