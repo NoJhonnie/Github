@@ -51,9 +51,18 @@
 		</div>
 		<div class="guest_cart fr">
 			<a href="/cart/" class="cart_name fl">我的购物车</a>
-			<div class="goods_count fl" id="show_count">{{ count }}</div>
+			<div class="goods_count fl" id="show_count"></div>
 		</div>
 	</div>
+    <script type="text/javascript">
+         //异步
+        $(function(){
+
+            $.get('/cart/tcount/', function (data) {
+                $('#show_count').text(data.count);
+            })
+        })
+    </script>
 {% endif %}
 
 {% block content %}

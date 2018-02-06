@@ -18,11 +18,7 @@
     }
 
 
-    function del() {
-        
-    }
     $(function () {
-        total();
 
         //全选全消
         $('#check_all').click(function () {
@@ -36,10 +32,13 @@
                 if ($(':checked').length+1 == $(':checkbox').length) {
                     $('#check_all').prop('checked', true);
                 }
+
             }else{
                 $('#check_all').prop('checked',false);
             }
         });
+
+        total();
 
         $('.num_show').blur(function () {
             count = $(this).val();
@@ -68,8 +67,12 @@
             price = $(this).prev().prev().text();
             total0 = parseFloat(count)*parseFloat(price);
             $(this).text(total0.toFixed(2)+'元');
-            total1 += total0;
-            total_count ++;
+            if($(this).prop('checked')){
+                pass;
+            }else{
+                total1 += total0;
+                total_count ++;
+            }
         });
         $('#total').text(total1.toFixed(2));
         $('.total_count').text(total_count);

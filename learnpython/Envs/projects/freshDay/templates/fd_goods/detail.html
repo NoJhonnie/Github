@@ -6,13 +6,14 @@
 	    num = parseFloat($('.num_show').val());
 	    $('.num_show').val(num+1);
 	    $('.num_show').blur();
-
+        gtotal();
     }
     function minus() {
 	    num = parseFloat($('.num_show').val());
 	    if(num>0) {
             $('.num_show').val(num - 1);
             $('.num_show').blur();
+            gtotal();
         }
     }
 
@@ -23,15 +24,15 @@
         window.location.href = strhref;
     }
 
-    $(function () {
+    function gtotal() {
         $('.num_show').blur(function () {
 			num = parseFloat($('.num_show').val());
 			price = parseFloat($('#gprice').text());
 			total = num * price;
-			$('#gtotal').text(total.toFixed(2)+'元');
+			$('#total').text(total.toFixed(2)+'元');
             });
 
-    });
+    }
 </script>
 {% endblock head %}
 
@@ -88,7 +89,7 @@
 					<a href="javascript:minus();" class="minus fr">-</a>
 				</div> 
 			</div>
-			<div class="total">总价：<em id="gtotal">{{g.gprice}}元</em></div>
+			<div class="total">总价：<em id="total">{{g.gprice}}元</em></div>
 			<div class="operate_btn">
 				<a href="javascript:gocart();" class="buy_btn">立即购买</a>
 				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
@@ -138,24 +139,26 @@
         $(".add_jump").css({'left':$add_y + 80, 'top':$add_x + 10, 'display':'block'})
         $("#add_cart").click(function () {
             //判断是否登陆，否则提示先登陆
-            if($('.login_btn').text().indexOf('登陆')>=0){
+            if ($('.login_btn').text().indexOf('登陆') >= 0) {
                 alert('请先登陆后再购买');
                 location.href = '/user/login/';
                 return;
             }
             //动画
             $(".add_jump").stop().animate({
-                'left':$to_y + 7,
-                'top': $to_x + 7,
+                    'left': $to_y + 7,
+                    'top': $to_x + 7,
                 },
-                "fast", function(){
-                    $(".add_jump").fadeOut('fast',function () {});
+                "fast", function () {
+                    $(".add_jump").fadeOut('fast', function () {
+                    });
 
-            //异步
-            num = parseInt($('.num_show').val());
-            $.get('/cart/add{{ g.id }}_'+num+'/', function (data) {
-               $('#show_count').text(data.count);
-            });
-        });
+                    //异步
+                    num = parseInt($('.num_show').val());
+                    $.get('/cart/add{{ g.id }}_' + num + '/', function (data) {
+                        $('#show_count').text(data.count);
+                    });
+                })
+        })
     </script>
 {% endblock content %}

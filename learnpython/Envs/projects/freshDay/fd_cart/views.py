@@ -39,6 +39,13 @@ def add(request,gid,count):
     else:
         return redirect('/cart/')
 
+# this is counting for the number of cart
+def tcount(request):
+    if request.is_ajax():
+        uid = request.session['user_id']
+        count = CartInfo.objects.filter(user_id=request.session['user_id']).count()
+        return JsonResponse({'count':count})
+
 @user_decorator.login
 def edit(request,cart_id,count):
     try:

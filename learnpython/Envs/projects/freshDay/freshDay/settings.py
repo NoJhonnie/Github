@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'fd_user',
     'fd_goods',
     'fd_cart',
+    'fd_orders',
 ]
 
 MIDDLEWARE_CLASSES = [
