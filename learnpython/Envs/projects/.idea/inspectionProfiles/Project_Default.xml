@@ -6,6 +6,7 @@
         <list>
           <option value="freshDay.fd_cart.views.fd_user" />
           <option value="freshDay.fd_orders.views.fd_user" />
+          <option value="freshDay.fd_orders.views.fd_cart" />
         </list>
       </option>
     </inspection_tool>
